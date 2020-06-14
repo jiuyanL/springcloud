@@ -1,0 +1,10 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: cloud-payment-service #服务别名
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181 #云服务器ping不同 使用本地zookeeper
+
+

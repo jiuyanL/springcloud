@@ -1,0 +1,28 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: cloud-payment-service #服务别名
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource     #数据源类型
+    driver-class-name: com.mysql.cj.jdbc.Driver  #刚刚报错是驱动的事 驱动用com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dbcloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  #所有的entities的别名包
+  type-aliases-package: com.atguigu.springcloud.entities
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka/  #单击版可以这么玩
+      #defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/ #集群版
+  instance:
+    instance-id: payment8002
+    prefer-ip-address: true  #访问路径可以显示ip地址

@@ -1,0 +1,21 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-feignorder-hystrix-service
+eureka:
+  client:
+    #表示是否将自己注册进eurekaServer  默认为true
+    register-with-eureka: true
+    #是否从eurekaServer抓取已有的注册信息  默认为true 单节点无所谓 集群必须设置为true才能配合Ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+       defaultZone: http://localhost:7001/eureka  #单击版
+ribbon:
+# 指的是建立连接后从服务器读取到可用资源所用的时间
+  ReadTimeout: 5000
+#建立连接所用的时间 适用于网络状况正常的情况下  两端连接所用的时间
+  ConnectTimeout: 5000
+feign:
+  hystrix:
+    enabled: true  # 在feign 开启hystrix
